@@ -1,14 +1,25 @@
 {
   "expo": {
-    "name": "my-reminder",
-    "slug": "my-reminder",
+    "name": "padapada-reminder",
+    "slug": "padapada-reminder",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myreminder",
+    "scheme": "padapada-reminder",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "icon": "./assets/expo.icon"
+      "bundleIdentifier": "com.yourname.padapadaReminder",
+      "appleTeamId": "Q64VM4R6FT",
+      "supportsTablet": false,
+      "entitlements": {
+        "com.apple.security.application-groups": [
+          "group.com.yourname.padapadaReminder",
+          "group.com.yourname.padapadaReminder"
+        ]
+      },
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -32,11 +43,19 @@
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 76
         }
-      ]
+      ],
+      "expo-notifications",
+      "@bacons/apple-targets"
     ],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "3a076796-5bb9-4811-bc71-67e0691e2aff"
+      }
     }
   }
 }
