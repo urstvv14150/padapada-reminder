@@ -8,13 +8,12 @@
     "scheme": "padapada-reminder",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "bundleIdentifier": "com.yourname.padapadaReminder",
+      "bundleIdentifier": "com.padapadaReminder.app",
       "appleTeamId": "Q64VM4R6FT",
       "supportsTablet": false,
       "entitlements": {
         "com.apple.security.application-groups": [
-          "group.com.yourname.padapadaReminder",
-          "group.com.yourname.padapadaReminder"
+          "group.com.padapadaReminder.app"
         ]
       },
       "infoPlist": {
@@ -28,7 +27,8 @@
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.padapadaReminder.app"
     },
     "web": {
       "output": "static",

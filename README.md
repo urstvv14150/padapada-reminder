@@ -1,56 +1,34 @@
-# Welcome to your Expo app 👋
+# MyReminder (Expo + iOS WidgetKit)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## 安裝
+```
+npx create-expo-app@latest my-reminder -t default
+cd my-reminder
+# 刪掉預設的 app/，把本專案的 app/ src/ targets/ app.json 複製進去
 
-## Get started
-
-1. Install dependencies
-
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+npx expo install expo-router expo-notifications expo-localization expo-status-bar expo-constants \
+  @react-native-async-storage/async-storage @react-native-community/datetimepicker \
+  react-native-safe-area-context react-native-svg
+npm i @tanstack/react-query @bacons/apple-targets
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 設定（只需要改 app.json）
+- `ios.bundleIdentifier`：你的 bundle id，例如 `com.me.myreminder`
+- `ios.entitlements` 的 App Group 必須是 `group.` + bundle id，例如 `group.com.me.myreminder`
+- `ios.appleTeamId`：你的付費開發者 Team ID（免費帳號不能用 App Group）
 
-### Other setup steps
+App 端、小工具端的 App Group 都會自動由 bundle id 推出，不用再手動改多個檔案。
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+## 執行
+```
+npx expo prebuild -p ios --clean
+npx expo run:ios --device
+```
 
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## 小工具使用
+1. 長按主畫面 → 加入小工具 → MyReminder，選尺寸。
+2. 長按該小工具 → 編輯小工具 → 分類：選「全部」或任一分類。
+   每個小工具可以選不同分類，所以可以同時放 4 個、各顯示一個分類。
+3. 舊版已加過的小工具請刪掉重加（設定方式變了）。
+4. 若小工具顯示「Open the app once to sync」：開啟 App，到「主題」頁按「重新同步小工具」，
+   並確認那頁顯示的 App Group 和小工具上的字串相同。
